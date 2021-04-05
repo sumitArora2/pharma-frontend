@@ -52,7 +52,7 @@ export const listCategoryDetails = (id) => async (dispatch,getState) => {
         Authorization: `Bearer ${userInfo.token}`,
       },
     };
-    const { data } = await axios.get(`/api/categories/${id}`, config);
+    const { data } = await axios.get(`https://pharma07.herokuapp.com/api/categories/${id}`, config);
 
     dispatch({
       type: CATEGORY_DETAILS_SUCCESS,
@@ -85,7 +85,7 @@ export const deleteCategory = (id) => async (dispatch, getState) => {
       },
     };
 
-    await axios.delete(`/api/categories/${id}`, config);
+    await axios.delete(`https://pharma07.herokuapp.com/api/categories/${id}`, config);
 
     dispatch({
       type: CATEGORY_DELETE_SUCCESS,
@@ -121,7 +121,7 @@ export const createCategory = () => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.post(`/api/categories`, {}, config);
+    const { data } = await axios.post(`https://pharma07.herokuapp.com/api/categories`, {}, config);
 
     dispatch({
       type: CATEGORY_CREATE_SUCCESS,
@@ -160,7 +160,7 @@ export const updateCategory = (category) => async (dispatch, getState) => {
     };
 
     const { data } = await axios.put(
-      `/api/categories/${category._id}`,
+      `https://pharma07.herokuapp.com/api/categories/${category._id}`,
       category,
       config
     );

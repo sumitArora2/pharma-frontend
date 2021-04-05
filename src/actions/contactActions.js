@@ -22,7 +22,7 @@ export const listContactMessages = (pageNumber = '') => async (
       },
     };
     const { data } = await axios.get(
-      `/api/contacts?pageNumber=${pageNumber}`,config
+      `https://pharma07.herokuapp.com/api/contacts?pageNumber=${pageNumber}`,config
     )
 
     dispatch({
@@ -56,7 +56,7 @@ export const createContactMessage = (contact) => async (dispatch, getState) => {
       },
     }
 
-    const { data } = await axios.post(`/api/contacts`,contact, config)
+    const { data } = await axios.post(`https://pharma07.herokuapp.com/api/contacts`,contact, config)
 
     dispatch({
       type: CONTACT_CREATE_SUCCESS,

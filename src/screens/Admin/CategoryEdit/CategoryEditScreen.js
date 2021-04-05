@@ -28,7 +28,7 @@ const CategoryEditScreen = ({ match, history }) => {
         },
       };
 
-      const { data } = await axios.post("/api/upload", formData, config);
+      const { data } = await axios.post("https://pharma07.herokuapp.com/api/upload", formData, config);
 
       setImage(data);
       setUploading(false);
