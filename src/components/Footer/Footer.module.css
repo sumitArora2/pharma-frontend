@@ -1,0 +1,37 @@
+.footerInfo{
+display: grid;
+grid-template-columns: 35% 30% 35%;
+margin: 40px;
+grid-gap: 18px;
+}
+.aboutUs{
+    text-align: left;
+}
+.aboutUs p{
+    width: 40%;
+}
+.quickLinks{
+width: 100%;
+text-align: left;
+}
+.links{
+    color:#323438;
+    line-height: 2.5;
+}
+.links:hover{
+   color: aqua;
+   text-decoration: none;
+} 
+.footerText{
+    text-align: center;
+    width: 100%;
+}
+.contactUs{
+    text-align: left;
+    line-height: 3.5;
+}
+@media (max-width: 650px) {
+    .footerInfo{
+        grid-template-columns: auto;
+    }
+}

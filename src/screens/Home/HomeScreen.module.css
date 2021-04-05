@@ -1,0 +1,152 @@
+.backgroundImg {
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 700px;
+}
+.banner {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+.bannerHeading {
+  font-size: 40px;
+  font-weight: 900;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+}
+.subtitle {
+  color: white;
+}
+.centered{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.couponContainer{
+  display: grid;
+  grid-template-columns: auto auto auto;
+  margin: 30px;
+  grid-gap: 30px;
+  color:rgb(255, 255, 255);
+  }
+.CopBox1{
+  text-align: center;
+  border-radius: 5px;
+  padding: 20px;
+  background-color:rgb(81, 234, 234);
+}
+.CopBox2{
+  text-align: center;
+  border-radius: 5px;
+  padding: 20px;
+  background-color:rgb(116, 209, 43);
+}
+.CopBox3{
+  text-align: center;
+  border-radius: 5px;
+  padding: 20px;
+  background-color:rgb(255, 193, 7);
+}
+.italic{
+  font-style: italic;
+}
+.pop_Prods{
+  display: grid;
+  grid-gap: 30px;
+  grid-template-columns: auto auto auto;
+}
+
+.exprtContainer{
+  display: grid;
+  grid-template-columns: auto auto;
+  margin-top: 60px;
+  grid-gap: 40px;
+  background: rgba(81, 234, 234, 0.9);
+  /* background-image:url('../images/bg_2.jpg'); */
+  padding: 80px 100px;
+}
+.exprt{
+  width: 100%;
+  height: 90%;
+  /* object-fit: cover; */
+}
+.pharmaHeading{
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 10%;
+  font-size: 2vw;
+}
+.exprtHeading{
+  position: absolute;
+  top: 10%;
+  right: 16%;
+  width: 34%;
+  font-size: 2vw;
+  text-align:left;
+}
+.exprtsubHeading{
+  position: absolute;
+  top: 33%;
+  right: 10%;
+  width: 40%;
+  text-align: left;
+  font-size: 1.5vw;
+}
+.pharmasubHeading{
+  position: absolute;
+  top: 33%;
+  left: 10%;
+  text-align: left;
+  width:50%;
+  font-size: 1.5vw;
+}
+/* Use a media query to add a breakpoint at 800px: */
+@media (max-width: 475px) {
+  .couponContainer{
+    grid-template-columns: auto auto;
+  }
+  .exprtHeading,.pharmaHeading{
+   font-size: 4vw;
+  }
+  .exprtsubHeading,.pharmasubHeading{
+    font-size: 2.5vw;
+  }
+}
+@media (max-width: 329px) {
+  .couponContainer{
+    grid-template-columns: auto;
+  }
+}
+@media (max-width: 540px) {
+  .pop_Prods{
+    grid-template-columns: auto;
+  }
+}
+
+@media screen and (max-width: 835px) and (min-width: 541px){
+  .pop_Prods{
+    grid-template-columns: auto auto;
+  }
+}
+@media (max-width: 1030px) {
+  .exprtContainer{
+    grid-template-columns: auto;
+    grid-gap:0px;
+    padding: 20px;
+    margin-top: 0px;
+  }
+  .exprtHeading,.pharmaHeading{
+    font-size: 4vw;
+  }
+  .exprt{
+    height: 70%;
+  }
+  .pharmasubHeading,.exprtsubHeading{
+   top: 37%;
+   font-size: 2.5vw; 
+  }
+}
+

@@ -1,0 +1,79 @@
+.banner {
+  position: relative;
+  text-align: center;
+  color: white;
+  }
+  .backgroundImg {
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 700px;
+  }
+  .centered{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .bannerHeading {
+    font-size: 40px;
+    font-weight: 900;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+  }
+  .how{
+      display: grid;
+      padding: 50px 108px;
+      grid-gap: 40px;
+      grid-template-columns: auto auto;
+  }
+  .howVideo{
+    height: 340px;
+    width: 560px;
+  }
+  .howText{
+      text-align: left;
+  }
+  .howText p{
+    color:#8C92A0;
+  }
+  .trust{
+    display: grid;
+      padding: 50px 108px;
+      grid-gap: 40px;
+      margin-top: 100px;
+      grid-template-columns: auto auto;
+  }
+  .trustText{
+    text-align: left;
+  }
+  .trustText p{
+    color:#8C92A0;
+  }
+  .trustVideo{
+    height: 340px;
+    width: 500px;
+  }
+  .services{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    background-color:rgba(229, 226, 226, 0.719);
+    grid-gap: 30px;
+    padding: 55px 110px;
+    text-align: left;
+  }
+  .team{
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 10px;
+    /* background-color:#F8F9FA; */
+    padding: 50px;
+  }
+  .teamHead{
+    /* background-color:#F8F9FA; */
+  }
+  .teamImg{
+    width: 120px;
+    margin: auto;
+    border-radius: 50%;
+  }
