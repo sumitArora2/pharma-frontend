@@ -23,7 +23,7 @@ export const listCategories = (pageNumber = "") => async (dispatch) => {
     dispatch({ type: CATEGORY_LIST_REQUEST });
 
     const { data } = await axios.get(
-      `/api/categories/?pageNumber=${pageNumber}`
+      `https://pharma07.herokuapp.com/api/categories/?pageNumber=${pageNumber}`
     );
 
     dispatch({
