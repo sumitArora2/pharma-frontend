@@ -1,7 +1,12 @@
 import React from "react";
 import classes from "./About.module.css";
 import bgImage from "../../images/BgImage.jpg";
+import Rajendarji from "../../images/RajendarUncleji.jpeg";
 import person4 from "../../images/person_4.jpg";
+import Ajayji from "../../images/AjayUncleJi.jpeg";
+import Arjun from "../../images/Arjun.jpeg"
+import Krishna from "../../images/Krishna.jpeg"
+
 const About = () => {
   return (
     <>
@@ -86,16 +91,16 @@ const About = () => {
       </div>
       <h2 className={classes.teamHead}>The Team</h2>
       <div className={classes.team}>
-        <div>
+        {/* <div>
           <img src={person4} className={classes.teamImg} />
           <h3>LATE SHREE DR. MOHAN LAL JI PATPATIA</h3>
           <h6>Founder(18/04/1916 - 18-08-2004)</h6>
           <p>
             Lorem ipsum dolor sit amet, consectetur
           </p>
-        </div>
+        </div> */}
         <div>
-        <img src={person4} className={classes.teamImg} />
+        <img src={Rajendarji} className={classes.teamImg} />
           <h3>LATE SHREE RAJENDAR PATPATIA</h3>
           <h6>Co-Founder(31/10/1952 - 11-09-2020)</h6>
           <p>
@@ -103,7 +108,7 @@ const About = () => {
           </p>
         </div>
         <div>
-        <img src={person4} className={classes.teamImg} />
+        <img src={Ajayji} className={classes.teamImg} />
           <h3>LATE SHREE AJAY PATPATIA</h3>
           <h6>Co-Founder(16/02/1972 - 15-09-2020)</h6>
           <p>
@@ -111,7 +116,7 @@ const About = () => {
           </p>
         </div>
         <div>
-        <img src={person4} className={classes.teamImg} />
+        <img src={Arjun} className={classes.teamImg} />
           <h3>ARJUN PATPATIA</h3>
           <h6>Co-Founder</h6>
           <p>
@@ -119,7 +124,7 @@ const About = () => {
           </p>
         </div>
         <div>
-        <img src={person4} className={classes.teamImg} />
+        <img src={Krishna} className={classes.teamImg} />
           <h3>KRISHNA PATPATIA</h3>
           <h6>Co-Founder</h6>
           <p>
