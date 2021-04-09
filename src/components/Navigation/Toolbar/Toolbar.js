@@ -25,19 +25,20 @@ const Toolbar = (props) => {
   return (
     <header className={classes.Toolbar}>
       {!showNav ? <DrawerToggle clicked={props.drawerToggleClicked} /> : ""}
-      {/* <div className={classes.MobileOnly}>
-        <h1>LRP</h1>
-        </div> */}
-      <div className={classes.MobileOnly}>
-        {/* <p className={classes.search}>Search</p> */}
+        {!showNav ? (
+        <div className={classes.Logo}>
+          <h5>LRP</h5>
+          <Logo />
+        </div>
+      ) : (
         <span onClick={() => searchView()}>
-          <i
-            class="fa fa-search"
-            aria-hidden="true"
-            style={{ fontSize: "30px", color: "white" }}
-          ></i>
-        </span>
-      </div>
+        <i
+          class="fa fa-search"
+          aria-hidden="true"
+          style={{ fontSize: "30px", color: "white" }}
+        ></i>
+      </span>
+      )}
       {showNav ? (
         <div className={classes.MobileOnly}>
           <input type="text" placeholder="Search items here"></input>
@@ -45,19 +46,25 @@ const Toolbar = (props) => {
       ) : (
         ""
       )}
+      <div className={classes.MobileOnly}>
       {!showNav ? (
-        <div className={classes.Logo}>
-          <Logo />
-        </div>
-      ) : (
         <span onClick={() => searchView()}>
           <i
-            class="fa fa-times"
+            class="fa fa-search"
             aria-hidden="true"
             style={{ fontSize: "30px", color: "white" }}
           ></i>
         </span>
-      )}
+      ) :( <span onClick={() => searchView()}>
+      <i
+        class="fa fa-times"
+        aria-hidden="true"
+        style={{ fontSize: "30px", color: "white" }}
+      ></i>
+    </span>)
+      }
+      </div>
+      
       <nav className={classes.DesktopOnly}>
         <NavigationItems history={props.history} />
       </nav>

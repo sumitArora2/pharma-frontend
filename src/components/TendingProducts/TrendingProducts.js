@@ -9,7 +9,7 @@ const TrendingProducts = () => {
         <div class="row">
           <div class="col-md-12">
             <h2>
-              Trending <b>Products</b>
+              Top Rated<b>Products</b>
             </h2>
             <div
               id="myCarousel"

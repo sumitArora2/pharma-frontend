@@ -19,6 +19,8 @@
 
 .Logo {
     height: 80%;
+    display: contents;
+    color:white;
 }
 .search{
     color: #FFFFFF;

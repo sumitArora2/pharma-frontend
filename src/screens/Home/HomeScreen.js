@@ -69,7 +69,7 @@ const HomeScreen = ({ match }) => {
         </div>
       </div>
 
-      <h4>POPULAR PRODUCTS</h4>
+      <h4>NEW PRODUCTS</h4>
       <div className={classes.pop_Prods}>
         <div>
           <img src={product2} style={{ maxWidth: "100%", margin: "auto" }} />
