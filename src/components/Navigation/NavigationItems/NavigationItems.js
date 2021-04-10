@@ -12,12 +12,19 @@ import classes from "./NavigationItems.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../../actions/userActions";
 import { LinkContainer } from "react-router-bootstrap";
+import {
+  openBackdrop,
+  showSearchNavigation,
+} from "../../../actions/backdropActions";
 const NavigationItems = ({ history }) => {
   const [keyword, setkeyword] = useState("");
   const dispatch = useDispatch();
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
+  const showbackdrop = useSelector((state) => state.showBackdrop);
+  const { show, type } = showbackdrop;
+
   const submitHandler = () => {
     // e.preventDefault();
     if (keyword.trim()) {
@@ -29,22 +36,27 @@ const NavigationItems = ({ history }) => {
   const logoutHandler = () => {
     dispatch(logout());
   };
+  const closeBackdrop=()=>{
+    if(type=="drawerBackdrop" && show){
+      dispatch(openBackdrop({ type: type, show: !show }));
+    }
+  }
   return (
     <ul className={classes.NavigationItems}>
       <Nav className="mr-auto">
-        <LinkContainer to="/">
+        <LinkContainer to="/" onClick={() => closeBackdrop()}>
           <Navbar.Brand>LRP</Navbar.Brand>
         </LinkContainer>
-        <LinkContainer to="/home">
+        <LinkContainer to="/home" onClick={() => closeBackdrop()}>
           <Nav.Link>Home</Nav.Link>
         </LinkContainer>
-        <LinkContainer to="/categories">
+        <LinkContainer to="/categories" onClick={() => closeBackdrop()}>
           <Nav.Link>Categories</Nav.Link>
         </LinkContainer>
-        <LinkContainer to="/about">
+        <LinkContainer to="/about" onClick={() => closeBackdrop()}>
           <Nav.Link>About</Nav.Link>
         </LinkContainer>
-        <LinkContainer to="/contact">
+        <LinkContainer to="/contact" onClick={() => closeBackdrop()}>
           <Nav.Link>Contact</Nav.Link>
         </LinkContainer>
       </Nav>

@@ -6,7 +6,7 @@ import person4 from "../../images/person_4.jpg";
 import Ajayji from "../../images/AjayUncleJi.jpeg";
 import Arjun from "../../images/Arjun.jpeg"
 import Krishna from "../../images/Krishna.jpeg"
-
+import MohanLalJi from "../../images/MohanLalJi.jpeg"
 const About = () => {
   return (
     <>
@@ -91,14 +91,14 @@ const About = () => {
       </div>
       <h2 className={classes.teamHead}>The Team</h2>
       <div className={classes.team}>
-        {/* <div>
-          <img src={person4} className={classes.teamImg} />
+        <div>
+          <img src={MohanLalJi} className={classes.teamImg} />
           <h3>LATE SHREE DR. MOHAN LAL JI PATPATIA</h3>
           <h6>Founder(18/04/1916 - 18-08-2004)</h6>
           <p>
             Lorem ipsum dolor sit amet, consectetur
           </p>
-        </div> */}
+        </div>
         <div>
         <img src={Rajendarji} className={classes.teamImg} />
           <h3>LATE SHREE RAJENDAR PATPATIA</h3>
