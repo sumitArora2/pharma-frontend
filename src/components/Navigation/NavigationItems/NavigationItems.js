@@ -35,6 +35,7 @@ const NavigationItems = ({ history }) => {
   };
   const logoutHandler = () => {
     dispatch(logout());
+    closeBackdrop();
   };
   const closeBackdrop=()=>{
     if(type=="drawerBackdrop" && show){
@@ -73,7 +74,7 @@ const NavigationItems = ({ history }) => {
         </Button>
       </Form>
       <Nav className="ml-auto">
-        <LinkContainer to="/cart">
+        <LinkContainer to="/cart" onClick={() => closeBackdrop()}>
           <Nav.Link>
             <i className="fas fa-shopping-cart"></i> Cart
           </Nav.Link>
@@ -81,27 +82,27 @@ const NavigationItems = ({ history }) => {
       </Nav>
       {userInfo && userInfo.isAdmin && (
         <NavDropdown title="Admin" id="adminmenu">
-          <LinkContainer to="/admin/userlist">
+          <LinkContainer to="/admin/userlist" onClick={() => closeBackdrop()}>
             <NavDropdown.Item className={classes.dropdownItems}>
               Users
             </NavDropdown.Item>
           </LinkContainer>
-          <LinkContainer to="/admin/categorylist">
+          <LinkContainer to="/admin/categorylist" onClick={() => closeBackdrop()}>
             <NavDropdown.Item className={classes.dropdownItems}>
               Categories
             </NavDropdown.Item>
           </LinkContainer>
-          <LinkContainer to="/admin/productlist">
+          <LinkContainer to="/admin/productlist" onClick={() => closeBackdrop()}>
             <NavDropdown.Item className={classes.dropdownItems}>
               Products
             </NavDropdown.Item>
           </LinkContainer>
-          <LinkContainer to="/admin/orderlist">
+          <LinkContainer to="/admin/orderlist" onClick={() => closeBackdrop()}>
             <NavDropdown.Item className={classes.dropdownItems}>
               Orders
             </NavDropdown.Item>
           </LinkContainer>
-          <LinkContainer to="/admin/messages">
+          <LinkContainer to="/admin/messages" onClick={() => closeBackdrop()}>
             <NavDropdown.Item className={classes.dropdownItems}>
               Messages
             </NavDropdown.Item>
@@ -110,12 +111,12 @@ const NavigationItems = ({ history }) => {
       )}
       {!userInfo ? (
         <NavDropdown title="Login" id="username">
-          <LinkContainer to="/login">
+          <LinkContainer to="/login" onClick={() => closeBackdrop()}>
             <NavDropdown.Item className={classes.dropdownItems}>
               Login
             </NavDropdown.Item>
           </LinkContainer>
-          <LinkContainer to="/register">
+          <LinkContainer to="/register" onClick={() => closeBackdrop()}>
             <NavDropdown.Item className={classes.dropdownItems}>
               Register
             </NavDropdown.Item>
@@ -123,7 +124,7 @@ const NavigationItems = ({ history }) => {
         </NavDropdown>
       ) : (
         <NavDropdown title={userInfo.name} id="username">
-          <LinkContainer to="/profile">
+          <LinkContainer to="/profile" onClick={() => closeBackdrop()}>
             <NavDropdown.Item className={classes.dropdownItems}>
               Profile
             </NavDropdown.Item>
