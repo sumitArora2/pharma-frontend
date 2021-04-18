@@ -5,6 +5,7 @@ import { Form, Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { CATEGORY_UPDATE_RESET } from '../../../constants/categoryConstants'
 import { listCategoryDetails, updateCategory } from '../../../actions/categoryActions'
+const {REACT_APP_SERVER_URL} =process.env;
 
 const CategoryEditScreen = ({ match, history }) => {
   const categoryId = match.params.id
@@ -28,7 +29,7 @@ const CategoryEditScreen = ({ match, history }) => {
         },
       };
 
-      const { data } = await axios.post("https://pharma07.herokuapp.com/api/upload", formData, config);
+      const { data } = await axios.post(`${REACT_APP_SERVER_URL}/upload`, formData, config);
 
       setImage(data);
       setUploading(false);

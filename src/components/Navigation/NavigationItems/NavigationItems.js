@@ -123,7 +123,7 @@ const NavigationItems = ({ history }) => {
           </LinkContainer>
         </NavDropdown>
       ) : (
-        <NavDropdown title={userInfo.name} id="username">
+        <NavDropdown title={userInfo.name ? userInfo.name : 'Welcome User'} id="username">
           <LinkContainer to="/profile" onClick={() => closeBackdrop()}>
             <NavDropdown.Item className={classes.dropdownItems}>
               Profile

@@ -26,6 +26,7 @@ import {
   PRODUCT_TOP_FAIL,
 } from '../constants/productConstants'
 import { logout } from './userActions'
+const {REACT_APP_SERVER_URL} =process.env;
 
 export const listProducts = (keyword = '', pageNumber = '') => async (
   dispatch
@@ -34,7 +35,7 @@ export const listProducts = (keyword = '', pageNumber = '') => async (
     dispatch({ type: PRODUCT_LIST_REQUEST })
 
     const { data } = await axios.get(
-      `https://pharma07.herokuapp.com/api/products?keyword=${keyword}&pageNumber=${pageNumber}`
+      `${REACT_APP_SERVER_URL}/products?keyword=${keyword}&pageNumber=${pageNumber}`
     )
 
     dispatch({
@@ -59,7 +60,7 @@ export const listCategoryProducts = (category) => async (
     dispatch({ type: PRODUCT_CATEGORY_REQUEST })
 
     const { data } = await axios.post(
-      `https://pharma07.herokuapp.com/api/products/categoryProducts`,
+      `${REACT_APP_SERVER_URL}/products/categoryProducts`,
       category
     )
 
@@ -83,7 +84,7 @@ export const listProductDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_DETAILS_REQUEST })
 
-    const { data } = await axios.get(`https://pharma07.herokuapp.com/api/products/${id}`)
+    const { data } = await axios.get(`${REACT_APP_SERVER_URL}/products/${id}`)
 
     dispatch({
       type: PRODUCT_DETAILS_SUCCESS,
@@ -116,7 +117,7 @@ export const deleteProduct = (id) => async (dispatch, getState) => {
       },
     }
 
-    await axios.delete(`https://pharma07.herokuapp.com/api/products/${id}`, config)
+    await axios.delete(`${REACT_APP_SERVER_URL}/products/${id}`, config)
 
     dispatch({
       type: PRODUCT_DELETE_SUCCESS,
@@ -152,7 +153,7 @@ export const createProduct = () => async (dispatch, getState) => {
       },
     }
 
-    const { data } = await axios.post(`https://pharma07.herokuapp.com/api/products`, {}, config)
+    const { data } = await axios.post(`${REACT_APP_SERVER_URL}/products`, {}, config)
 
     dispatch({
       type: PRODUCT_CREATE_SUCCESS,
@@ -191,7 +192,7 @@ export const updateProduct = (product) => async (dispatch, getState) => {
     }
 
     const { data } = await axios.put(
-      `https://pharma07.herokuapp.com/api/products/${product._id}`,
+      `${REACT_APP_SERVER_URL}/products/${product._id}`,
       product,
       config
     )
@@ -236,7 +237,7 @@ export const createProductReview = (productId, review) => async (
       },
     }
 
-    await axios.post(`https://pharma07.herokuapp.com/api/products/${productId}/reviews`, review, config)
+    await axios.post(`${REACT_APP_SERVER_URL}/products/${productId}/reviews`, review, config)
 
     dispatch({
       type: PRODUCT_CREATE_REVIEW_SUCCESS,
@@ -260,7 +261,7 @@ export const listTopProducts = () => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_TOP_REQUEST })
 
-    const { data } = await axios.get(`https://pharma07.herokuapp.com/api/products/top`)
+    const { data } = await axios.get(`${REACT_APP_SERVER_URL}/products/top`)
 
     dispatch({
       type: PRODUCT_TOP_SUCCESS,

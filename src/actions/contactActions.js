@@ -8,6 +8,8 @@ import {
   CONTACT_CREATE_FAIL
 } from '../constants/contactConstants';
 import { logout } from './userActions'
+const {REACT_APP_SERVER_URL} =process.env;
+
 export const listContactMessages = (pageNumber = '') => async (
   dispatch,getState
 ) => {
@@ -22,7 +24,7 @@ export const listContactMessages = (pageNumber = '') => async (
       },
     };
     const { data } = await axios.get(
-      `https://pharma07.herokuapp.com/api/contacts?pageNumber=${pageNumber}`,config
+      `${REACT_APP_SERVER_URL}/api/contacts?pageNumber=${pageNumber}`,config
     )
 
     dispatch({
@@ -56,7 +58,7 @@ export const createContactMessage = (contact) => async (dispatch, getState) => {
       },
     }
 
-    const { data } = await axios.post(`https://pharma07.herokuapp.com/api/contacts`,contact, config)
+    const { data } = await axios.post(`${REACT_APP_SERVER_URL}/api/contacts`,contact, config)
 
     dispatch({
       type: CONTACT_CREATE_SUCCESS,

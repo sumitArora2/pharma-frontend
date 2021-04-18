@@ -12,6 +12,7 @@ import {
   updateProduct,
 } from "../../../actions/productActions";
 import { PRODUCT_UPDATE_RESET } from "../../../constants/productConstants";
+const {REACT_APP_SERVER_URL} =process.env;
 
 const ProductEditScreen = ({ match, history }) => {
   const productId = match.params.id;
@@ -79,7 +80,7 @@ const ProductEditScreen = ({ match, history }) => {
         },
       };
 
-      const { data } = await axios.post("https://pharma07.herokuapp.com/api/upload", formData, config);
+      const { data } = await axios.post(`${REACT_APP_SERVER_URL}/upload`, formData, config);
 
       setImage(data);
       setUploading(false);

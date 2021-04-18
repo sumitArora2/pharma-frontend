@@ -6,8 +6,10 @@ import {
   CART_SAVE_PAYMENT_METHOD,
 } from '../constants/cartConstants'
 
+const {REACT_APP_SERVER_URL} =process.env;
+
 export const addToCart = (id, qty) => async (dispatch, getState) => {
-  const { data } = await axios.get(`https://pharma07.herokuapp.com/api/products/${id}`)
+  const { data } = await axios.get(`${REACT_APP_SERVER_URL}/products/${id}`)
 
   dispatch({
     type: CART_ADD_ITEM,
