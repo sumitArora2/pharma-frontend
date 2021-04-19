@@ -24,8 +24,11 @@ import {
   USER_UPDATE_FAIL,
   USER_UPDATE_SUCCESS,
   USER_UPDATE_REQUEST,
-} from '../constants/userConstants'
-import { ORDER_LIST_MY_RESET } from '../constants/orderConstants'
+  SHOW_LOGEDIN
+} from '../constants/userConstants';
+import { ORDER_LIST_MY_RESET } from '../constants/orderConstants';
+
+
 const {REACT_APP_SERVER_URL} =process.env;
 
 export const login = (email, password) => async (dispatch) => {
@@ -72,6 +75,11 @@ export const logout = () => (dispatch) => {
   dispatch({ type: USER_DETAILS_RESET })
   dispatch({ type: ORDER_LIST_MY_RESET })
   dispatch({ type: USER_LIST_RESET })
+  // firebase.auth().signOut();
+  dispatch({
+    type: SHOW_LOGEDIN,
+    payload: true,
+  });
   document.location.href = '/login'
 }
 

@@ -27,6 +27,7 @@ import {
   userListReducer,
   userDeleteReducer,
   userUpdateReducer,
+  checkLogedIn
 } from "./reducers/userReducers";
 import {
   orderCreateReducer,
@@ -79,6 +80,7 @@ const reducer = combineReducers({
   messageSend: contactCreateReducer,
   showBackdrop: showBackdropReducer,
   showSearchNav: enableSearchNavigation,
+  isLoggedIn:checkLogedIn
 });
 
 const cartItemsFromStorage = localStorage.getItem("cartItems")

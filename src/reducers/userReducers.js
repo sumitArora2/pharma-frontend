@@ -25,6 +25,7 @@ import {
   USER_UPDATE_SUCCESS,
   USER_UPDATE_FAIL,
   USER_UPDATE_PROFILE_RESET,
+  SHOW_LOGEDIN
 } from "../constants/userConstants";
 
 export const userLoginReducer = (state = {}, action) => {
@@ -135,4 +136,14 @@ export const userUpdateReducer = (state = { user: {} }, action) => {
     default:
       return state;
   }
+};
+  export const checkLogedIn = (state = { isLogout: true }, action) => {
+    switch (action.type) {
+      case SHOW_LOGEDIN:
+        return {
+          isLogout: action.payload,
+        };
+      default:
+        return state;
+    }
 };
