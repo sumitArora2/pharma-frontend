@@ -107,7 +107,7 @@ const LoginScreen = ({ location, history }) => {
     <>
       <h1>REACT PHONE AUTHENTICATION</h1>
       <div id="firebaseui-auth-container"></div>
-      <a onClick={() => firebase.auth().signOut()}>Sign-out</a>
+      {/* <a onClick={() => firebase.auth().signOut()}>Sign-out</a> */}
     </>
   );
 };
