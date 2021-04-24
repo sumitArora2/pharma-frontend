@@ -53,7 +53,7 @@ export const listCategoryDetails = (id) => async (dispatch,getState) => {
         Authorization: `Bearer ${userInfo.token}`,
       },
     };
-    const { data } = await axios.get(`${REACT_APP_SERVER_URL}/api/categories/${id}`, config);
+    const { data } = await axios.get(`${REACT_APP_SERVER_URL}/categories/${id}`, config);
 
     dispatch({
       type: CATEGORY_DETAILS_SUCCESS,
@@ -86,7 +86,7 @@ export const deleteCategory = (id) => async (dispatch, getState) => {
       },
     };
 
-    await axios.delete(`${REACT_APP_SERVER_URL}/api/categories/${id}`, config);
+    await axios.delete(`${REACT_APP_SERVER_URL}/categories/${id}`, config);
 
     dispatch({
       type: CATEGORY_DELETE_SUCCESS,
@@ -122,7 +122,7 @@ export const createCategory = () => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.post(`${REACT_APP_SERVER_URL}/api/categories`, {}, config);
+    const { data } = await axios.post(`${REACT_APP_SERVER_URL}/categories`, {}, config);
 
     dispatch({
       type: CATEGORY_CREATE_SUCCESS,
@@ -161,7 +161,7 @@ export const updateCategory = (category) => async (dispatch, getState) => {
     };
 
     const { data } = await axios.put(
-      `${REACT_APP_SERVER_URL}/api/categories/${category._id}`,
+      `${REACT_APP_SERVER_URL}/categories/${category._id}`,
       category,
       config
     );

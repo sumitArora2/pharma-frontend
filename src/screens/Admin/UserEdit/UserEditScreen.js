@@ -11,8 +11,9 @@ import { USER_UPDATE_RESET } from '../../../constants/userConstants'
 const UserEditScreen = ({ match, history }) => {
   const userId = match.params.id
 
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phoneNumber,setPhoneNumber]=useState('');
   const [isAdmin, setIsAdmin] = useState(false)
 
   const dispatch = useDispatch()
@@ -37,6 +38,7 @@ const UserEditScreen = ({ match, history }) => {
       } else {
         setName(user.name)
         setEmail(user.email)
+        setPhoneNumber(user.phoneNumber)
         setIsAdmin(user.isAdmin)
       }
     }
@@ -44,7 +46,7 @@ const UserEditScreen = ({ match, history }) => {
 
   const submitHandler = (e) => {
     e.preventDefault()
-    dispatch(updateUser({ _id: userId, name, email, isAdmin }))
+    dispatch(updateUser({ _id: userId, name, email,phoneNumber, isAdmin }))
   }
 
   return (
@@ -72,6 +74,16 @@ const UserEditScreen = ({ match, history }) => {
                 placeholder='Enter email'
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+
+            <Form.Group controlId='phoneNumber'>
+              <Form.Label>Enter PhoneNumber</Form.Label>
+              <Form.Control
+                type='text'
+                placeholder='Enter PhoneNumber'
+                value={phoneNumber}
+                onChange={(e) => setPhoneNumber(e.target.value)}
               ></Form.Control>
             </Form.Group>
 

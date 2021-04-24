@@ -153,7 +153,7 @@ export const createProduct = () => async (dispatch, getState) => {
       },
     }
 
-    const { data } = await axios.post(`${REACT_APP_SERVER_URL}/products`, {}, config)
+    const { data } = await axios.post(`${REACT_APP_SERVER_URL}/products`, {id:userInfo._id}, config)
 
     dispatch({
       type: PRODUCT_CREATE_SUCCESS,

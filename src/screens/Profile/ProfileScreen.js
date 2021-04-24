@@ -33,24 +33,24 @@ const ProfileScreen = ({ location, history }) => {
     if (!userInfo) {
       history.push('/login')
     } else {
-      if (!user || !user.name || success) {
-        dispatch({ type: USER_UPDATE_PROFILE_RESET })
-        dispatch(getUserDetails('profile'))
-        dispatch(listMyOrders())
-      } else {
+      if (Object.keys(user).length) {
         setName(user.name)
         setEmail(user.email)
+      } else {
+          dispatch(getUserDetails(userInfo._id))
+          //   dispatch(listMyOrders())
+          // setName(user.name)
+          // setEmail(user.email)
       }
     }
-  }, [dispatch, history, userInfo, user, success])
+  }, [dispatch,user,success])
 
   const submitHandler = (e) => {
     e.preventDefault()
-    if (password !== confirmPassword) {
-      // setMessage('Passwords do not match')
-      console.log('Passwords do not match')
-    } else {
-      dispatch(updateUserProfile({ id: user._id, name, email, password }))
+    if (name && email) {
+      dispatch(updateUserProfile({ phoneNumber: userInfo.phoneNumber, name, email,token:userInfo.token }))
+    }else{
+      console.log("Please enter the name and email both");
     }
   }
   return (
@@ -85,25 +85,6 @@ const ProfileScreen = ({ location, history }) => {
               onChange={(e) => setEmail(e.target.value)}
             ></Form.Control>
           </Form.Group>
-
-          <Form.Group controlId="password">
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              type="password"
-              placeholder="Enter password"
-              onChange={(e) => setPassword(e.target.value)}
-            ></Form.Control>
-          </Form.Group>
-
-          <Form.Group controlId="confirmPassword">
-            <Form.Label>Confirm Password</Form.Label>
-            <Form.Control
-              type="password"
-              placeholder="Confirm password"
-              onChange={(e) => setConfirmPassword(e.target.value)}
-            ></Form.Control>
-          </Form.Group>
-
           <Button type="submit" variant="primary">
             Update
           </Button>

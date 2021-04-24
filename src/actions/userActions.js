@@ -31,7 +31,7 @@ import { ORDER_LIST_MY_RESET } from '../constants/orderConstants';
 
 const {REACT_APP_SERVER_URL} =process.env;
 
-export const login = (email, password) => async (dispatch) => {
+export const login = (phoneNumber,token) => async (dispatch) => {
   try {
     dispatch({
       type: USER_LOGIN_REQUEST,
@@ -45,15 +45,21 @@ export const login = (email, password) => async (dispatch) => {
 
     const { data } = await axios.post(
       `${REACT_APP_SERVER_URL}/users/login`,
-      { email, password },
+      { phoneNumber },
       config
     )
+    if(token){
+      data.token=token;
+    }
 
     dispatch({
       type: USER_LOGIN_SUCCESS,
       payload: data,
     })
-
+    dispatch({
+      type: USER_DETAILS_SUCCESS,
+      payload: data,
+    })
     localStorage.setItem('userInfo', JSON.stringify(data))
   } catch (error) {
     dispatch({
@@ -178,13 +184,19 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
     }
 
     const { data } = await axios.put(`${REACT_APP_SERVER_URL}/users/profile`, user, config)
-
+   if(user.token){
+     data.token=user.token
+   }
     dispatch({
       type: USER_UPDATE_PROFILE_SUCCESS,
       payload: data,
     })
     dispatch({
       type: USER_LOGIN_SUCCESS,
+      payload: data,
+    })
+    dispatch({
+      type: USER_DETAILS_SUCCESS,
       payload: data,
     })
     localStorage.setItem('userInfo', JSON.stringify(data))
@@ -231,7 +243,7 @@ export const listUsers = (pageNumber = '') => async (dispatch, getState) => {
         ? error.response.data.message
         : error.message
     if (message === 'Not authorized, token failed') {
-      dispatch(logout())
+      // dispatch(logout())
     }
     dispatch({
       type: USER_LIST_FAIL,

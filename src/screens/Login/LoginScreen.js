@@ -3,11 +3,13 @@ import React, { useState, useEffect } from "react";
 import firebaseConfig from "../../firebase";
 import * as firebaseui from "firebaseui";
 import firebase from "firebase";
+import { login } from '../../actions/userActions';
 import { useDispatch, useSelector } from "react-redux";
 import {
   USER_LOGIN_SUCCESS,
   SHOW_LOGEDIN,
 } from "../../constants/userConstants";
+import { getUserDetails } from "../../actions/userActions";
 import { register } from "../../actions/userActions";
 const LoginScreen = ({ location, history }) => {
   // const [userInfo, setUserInfo] = useState();
@@ -15,6 +17,8 @@ const LoginScreen = ({ location, history }) => {
   const  checkLogut=useSelector((state) => state.isLoggedIn);
   const { userInfo } = userLogin;
   const {isLogout}=checkLogut;
+  const redirect = location.search ? location.search.split('=')[1] : '/'
+
   const dispatch = useDispatch();
   useEffect(() => {
     let data = {
@@ -50,13 +54,16 @@ const LoginScreen = ({ location, history }) => {
             // setUserInfo(data);
             if (data.isNewUser) {
               dispatch(register(data));
+            }else{
+              dispatch(login(data.phoneNumber,data.token));
+              // dispatch(getUserDetails(data.phoneNumber,data.token))
             }
-            dispatch({
-              type: USER_LOGIN_SUCCESS,
-              payload: data,
-            });
-            localStorage.setItem("userInfo", JSON.stringify(data));
-            return true;
+            // dispatch({
+            //   type: USER_LOGIN_SUCCESS,
+            //   payload: data,
+            // });
+            // localStorage.setItem("userInfo", JSON.stringify(data));
+            return false;
           },
         },
         // tosUrl: "https://netflix-clone-ankur.herokuapp.com/"
@@ -100,9 +107,9 @@ const LoginScreen = ({ location, history }) => {
       });
     }
     else {
-      history.push("/");
+      history.push(redirect)
     }
-  }, [isLogout]);
+  }, [isLogout,userInfo]);
   return (
     <>
       <h1>REACT PHONE AUTHENTICATION</h1>

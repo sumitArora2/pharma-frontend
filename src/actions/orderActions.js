@@ -40,7 +40,7 @@ export const createOrder = (order) => async (dispatch, getState) => {
       },
     }
 
-    const { data } = await axios.post(`${REACT_APP_SERVER_URL}/api/orders`, order, config)
+    const { data } = await axios.post(`${REACT_APP_SERVER_URL}/orders`, order, config)
 
     dispatch({
       type: ORDER_CREATE_SUCCESS,
@@ -82,7 +82,7 @@ export const getOrderDetails = (id) => async (dispatch, getState) => {
       },
     }
 
-    const { data } = await axios.get(`${REACT_APP_SERVER_URL}/api/orders/${id}`, config)
+    const { data } = await axios.get(`${REACT_APP_SERVER_URL}/orders/${id}`, config)
 
     dispatch({
       type: ORDER_DETAILS_SUCCESS,
@@ -124,7 +124,7 @@ export const payOrder = (orderId, paymentResult) => async (
     }
 
     const { data } = await axios.put(
-      `${REACT_APP_SERVER_URL}/api/orders/${orderId}/pay`,
+      `${REACT_APP_SERVER_URL}/orders/${orderId}/pay`,
       paymentResult,
       config
     )
@@ -165,7 +165,7 @@ export const deliverOrder = (order) => async (dispatch, getState) => {
     }
 
     const { data } = await axios.put(
-      `${REACT_APP_SERVER_URL}/api/orders/${order._id}/deliver`,
+      `${REACT_APP_SERVER_URL}/orders/${order._id}/deliver`,
       {},
       config
     )

@@ -10,6 +10,8 @@ import { USER_DETAILS_RESET } from "../../constants/userConstants";
 
 const PlaceOrderScreen = ({ history }) => {
   const dispatch = useDispatch();
+  const userLogin = useSelector((state) => state.userLogin)
+  const { userInfo } = userLogin
 
   const cart = useSelector((state) => state.cart);
 
@@ -57,6 +59,7 @@ const PlaceOrderScreen = ({ history }) => {
         shippingPrice: cart.shippingPrice,
         taxPrice: cart.taxPrice,
         totalPrice: cart.totalPrice,
+        userId:userInfo._id
       })
     );
   };

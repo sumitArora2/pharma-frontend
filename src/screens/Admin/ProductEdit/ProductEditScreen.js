@@ -59,6 +59,8 @@ const ProductEditScreen = ({ match, history }) => {
         setBrand(product.brand);
         if(product.category=='Sample category' && categories){
           setCategory(categories[0].name);
+        }else{
+          setCategory(product.category);
         }
         setCountInStock(product.countInStock);
         setDescription(product.description);
