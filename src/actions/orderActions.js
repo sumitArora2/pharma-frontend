@@ -189,7 +189,7 @@ export const deliverOrder = (order) => async (dispatch, getState) => {
   }
 }
 
-export const listMyOrders = () => async (dispatch, getState) => {
+export const listMyOrders = (id) => async (dispatch, getState) => {
   try {
     dispatch({
       type: ORDER_LIST_MY_REQUEST,
@@ -205,7 +205,7 @@ export const listMyOrders = () => async (dispatch, getState) => {
       },
     }
 
-    const { data } = await axios.get(`${REACT_APP_SERVER_URL}/orders/myorders`, config)
+    const { data } = await axios.get(`${REACT_APP_SERVER_URL}/orders/myorders/${id}`,config)
 
     dispatch({
       type: ORDER_LIST_MY_SUCCESS,
