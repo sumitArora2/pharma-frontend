@@ -33,7 +33,9 @@ const Footer = () => {
         <ul class="list-unstyled">
           <li>
           <i class='fas fa-map-marker-alt' style={{color:"rgb(91, 231, 232)",marginRight: "7px"}}></i>
-             Lane No:-13,Gandhi Colony,MuzaffarNagar
+           Ajay Medicose,
+           Lane No:-13,
+           Gandhi Colony,MuzaffarNagar
           </li>
           <li>
           <i class='fas fa-phone' style={{color:"rgb(91, 231, 232)",marginRight: "7px"}}></i>

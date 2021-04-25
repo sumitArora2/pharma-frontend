@@ -57,6 +57,9 @@ const NavigationItems = ({ history }) => {
         <LinkContainer to="/contact" onClick={() => closeBackdrop()}>
           <Nav.Link>Contact</Nav.Link>
         </LinkContainer>
+        <LinkContainer to="/about" onClick={() => closeBackdrop()}>
+          <Nav.Link>About Us</Nav.Link>
+        </LinkContainer>
       </Nav>
       <Form inline>
         <FormControl
@@ -134,11 +137,6 @@ const NavigationItems = ({ history }) => {
           </NavDropdown.Item>
         </NavDropdown>
       )}
-      <Nav className="mr-auto">
-      <LinkContainer to="/about" onClick={() => closeBackdrop()}>
-          <Nav.Link>About Us</Nav.Link>
-        </LinkContainer>
-      </Nav>
     </ul>
   );
 };
