@@ -54,9 +54,6 @@ const NavigationItems = ({ history }) => {
         <LinkContainer to="/categories" onClick={() => closeBackdrop()}>
           <Nav.Link>Categories</Nav.Link>
         </LinkContainer>
-        <LinkContainer to="/about" onClick={() => closeBackdrop()}>
-          <Nav.Link>About</Nav.Link>
-        </LinkContainer>
         <LinkContainer to="/contact" onClick={() => closeBackdrop()}>
           <Nav.Link>Contact</Nav.Link>
         </LinkContainer>
@@ -137,6 +134,11 @@ const NavigationItems = ({ history }) => {
           </NavDropdown.Item>
         </NavDropdown>
       )}
+      <Nav className="mr-auto">
+      <LinkContainer to="/about" onClick={() => closeBackdrop()}>
+          <Nav.Link>About Us</Nav.Link>
+        </LinkContainer>
+      </Nav>
     </ul>
   );
 };

@@ -23,9 +23,9 @@ const HomeScreen = ({ match }) => {
         <img src={bgImage} className={classes.backgroundImg} />
         <div className={classes.centered}>
           <h2 className={classes.subtitle}>
-            Effective Medicine, New Medicine Everyday
+          REGISTER YOUR DAILY NEED MEDICINE PRODUCTS CALL -8433442963
           </h2>
-          <h1 className={classes.bannerHeading}>Welcome To Pharma</h1>
+          <h1 className={classes.bannerHeading}>Welcome To  life research pharma</h1>
           <p>
             <a href="#" className="btn btn-primary px-5 py-3">
               Shop Now

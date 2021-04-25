@@ -6,7 +6,7 @@
 }
 .catItems{
     display: grid;
-    grid-template-columns: auto auto auto auto auto;
+    grid-template-columns: 231px 231px 231px 231px 231px;
     margin: 15px;
     grid-gap: 30px;
 }
