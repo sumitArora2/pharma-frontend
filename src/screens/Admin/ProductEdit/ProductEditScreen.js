@@ -57,7 +57,7 @@ const ProductEditScreen = ({ match, history }) => {
         setMrp(product.mrp);
         setImage(product.image);
         setBrand(product.brand);
-        if(product.category=='Sample category' && categories){
+        if(product.category=='Sample category' && categories.length){
           setCategory(categories[0].name);
         }else{
           setCategory(product.category);
