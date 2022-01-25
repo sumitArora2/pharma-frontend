@@ -13,6 +13,9 @@ import {
 } from "../../../actions/productActions";
 import { PRODUCT_UPDATE_RESET } from "../../../constants/productConstants";
 
+
+const { REACT_APP_SERVER_URL } = process.env;
+
 const ProductEditScreen = ({ match, history }) => {
   const productId = match.params.id;
 
@@ -40,8 +43,8 @@ const ProductEditScreen = ({ match, history }) => {
   } = productUpdate;
   const categoryList = useSelector((state) => state.categoryList);
   const { categories } = categoryList;
-  console.log("product",product);
-  console.log("categories",categories);
+  console.log("product", product);
+  console.log("categories", categories);
   useEffect(() => {
     if (successUpdate) {
       dispatch({ type: PRODUCT_UPDATE_RESET });
@@ -56,7 +59,7 @@ const ProductEditScreen = ({ match, history }) => {
         setMrp(product.mrp);
         setImage(product.image);
         setBrand(product.brand);
-        if(product.category=='Sample category' && categories){
+        if (product?.category == 'Sample category' && categories.length > 0) {
           setCategory(categories[0].name);
         }
         setCountInStock(product.countInStock);
@@ -79,7 +82,7 @@ const ProductEditScreen = ({ match, history }) => {
         },
       };
 
-      const { data } = await axios.post("https://pharma07.herokuapp.com/api/upload", formData, config);
+      const { data } = await axios.post(`${REACT_APP_SERVER_URL}/upload`, formData, config);
 
       setImage(data);
       setUploading(false);

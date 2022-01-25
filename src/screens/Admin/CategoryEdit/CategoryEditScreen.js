@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { CATEGORY_UPDATE_RESET } from '../../../constants/categoryConstants'
 import { listCategoryDetails, updateCategory } from '../../../actions/categoryActions'
 
+const { REACT_APP_SERVER_URL } = process.env;
+
 const CategoryEditScreen = ({ match, history }) => {
   const categoryId = match.params.id
 
@@ -28,7 +30,7 @@ const CategoryEditScreen = ({ match, history }) => {
         },
       };
 
-      const { data } = await axios.post("https://pharma07.herokuapp.com/api/upload", formData, config);
+      const { data } = await axios.post(`${REACT_APP_SERVER_URL}/upload`, formData, config);
 
       setImage(data);
       setUploading(false);
@@ -78,19 +80,19 @@ const CategoryEditScreen = ({ match, history }) => {
         Go Back
       </Link>
       {/* <FormContainer> */}
-        <h1>Edit Category</h1>
-       
-          <Form onSubmit={submitHandler}>
-            <Form.Group controlId='name'>
-              <Form.Label>Name</Form.Label>
-              <Form.Control
-                type='name'
-                placeholder='Enter name'
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              ></Form.Control>
-            </Form.Group>
-            <Form.Group controlId="image">
+      <h1>Edit Category</h1>
+
+      <Form onSubmit={submitHandler}>
+        <Form.Group controlId='name'>
+          <Form.Label>Name</Form.Label>
+          <Form.Control
+            type='name'
+            placeholder='Enter name'
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          ></Form.Control>
+        </Form.Group>
+        <Form.Group controlId="image">
           <Form.Label>Category Image</Form.Label>
           <Form.Control
             type="text"
@@ -104,11 +106,11 @@ const CategoryEditScreen = ({ match, history }) => {
             custom
             onChange={uploadFileHandler}
           ></Form.File>
-           </Form.Group>
-            <Button type='submit' variant='primary'>
-              Update
-            </Button>
-          </Form>
+        </Form.Group>
+        <Button type='submit' variant='primary'>
+          Update
+        </Button>
+      </Form>
     </>
   )
 }

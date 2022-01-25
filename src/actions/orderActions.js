@@ -22,6 +22,8 @@ import {
 } from '../constants/orderConstants'
 import { logout } from './userActions'
 
+const { REACT_APP_SERVER_URL } = process.env;
+
 export const createOrder = (order) => async (dispatch, getState) => {
   try {
     dispatch({
@@ -39,7 +41,7 @@ export const createOrder = (order) => async (dispatch, getState) => {
       },
     }
 
-    const { data } = await axios.post(`https://pharma07.herokuapp.com/api/orders`, order, config)
+    const { data } = await axios.post(`${REACT_APP_SERVER_URL}/orders`, order, config)
 
     dispatch({
       type: ORDER_CREATE_SUCCESS,
@@ -81,7 +83,7 @@ export const getOrderDetails = (id) => async (dispatch, getState) => {
       },
     }
 
-    const { data } = await axios.get(`https://pharma07.herokuapp.com/api/orders/${id}`, config)
+    const { data } = await axios.get(`${REACT_APP_SERVER_URL}/orders/${id}`, config)
 
     dispatch({
       type: ORDER_DETAILS_SUCCESS,
@@ -123,7 +125,7 @@ export const payOrder = (orderId, paymentResult) => async (
     }
 
     const { data } = await axios.put(
-      `https://pharma07.herokuapp.com/api/orders/${orderId}/pay`,
+      `${REACT_APP_SERVER_URL}/orders/${orderId}/pay`,
       paymentResult,
       config
     )
@@ -164,7 +166,7 @@ export const deliverOrder = (order) => async (dispatch, getState) => {
     }
 
     const { data } = await axios.put(
-      `https://pharma07.herokuapp.com/api/orders/${order._id}/deliver`,
+      `${REACT_APP_SERVER_URL}/orders/${order._id}/deliver`,
       {},
       config
     )
@@ -204,7 +206,7 @@ export const listMyOrders = () => async (dispatch, getState) => {
       },
     }
 
-    const { data } = await axios.get(`https://pharma07.herokuapp.com/api/orders/myorders`, config)
+    const { data } = await axios.get(`${REACT_APP_SERVER_URL}/orders/myorders`, config)
 
     dispatch({
       type: ORDER_LIST_MY_SUCCESS,
@@ -241,7 +243,7 @@ export const listOrders = (pageNumber = '') => async (dispatch, getState) => {
       },
     }
 
-    const { data } = await axios.get(`https://pharma07.herokuapp.com/api/orders?pageNumber=${pageNumber}`, config)
+    const { data } = await axios.get(`${REACT_APP_SERVER_URL}/orders?pageNumber=${pageNumber}`, config)
 
     dispatch({
       type: ORDER_LIST_SUCCESS,

@@ -27,6 +27,8 @@ import {
 } from '../constants/userConstants'
 import { ORDER_LIST_MY_RESET } from '../constants/orderConstants'
 
+const { REACT_APP_SERVER_URL } = process.env
+
 export const login = (email, password) => async (dispatch) => {
   try {
     dispatch({
@@ -40,7 +42,7 @@ export const login = (email, password) => async (dispatch) => {
     }
 
     const { data } = await axios.post(
-      'https://pharma07.herokuapp.com/api/users/login',
+      `${REACT_APP_SERVER_URL}/users/login`,
       { email, password },
       config
     )
@@ -87,7 +89,7 @@ export const register = (name, email, password) => async (dispatch) => {
     }
 
     const { data } = await axios.post(
-      'https://pharma07.herokuapp.com/api/users',
+      `${REACT_APP_SERVER_URL}/users`,
       { name, email, password },
       config
     )
@@ -130,8 +132,8 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
       },
     }
 
-    const { data } = await axios.get(`https://pharma07.herokuapp.com/api/users/${id}`, config)
-   console.log("data",data);
+    const { data } = await axios.get(`${REACT_APP_SERVER_URL}/users/${id}`, config)
+    console.log("data", data);
     dispatch({
       type: USER_DETAILS_SUCCESS,
       payload: data,
@@ -168,7 +170,7 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
       },
     }
 
-    const { data } = await axios.put(`https://pharma07.herokuapp.com/api/users/profile`, user, config)
+    const { data } = await axios.put(`${REACT_APP_SERVER_URL}/users/profile`, user, config)
 
     dispatch({
       type: USER_UPDATE_PROFILE_SUCCESS,
@@ -210,7 +212,7 @@ export const listUsers = (pageNumber = '') => async (dispatch, getState) => {
       },
     }
 
-    const { data } = await axios.get(`https://pharma07.herokuapp.com/api/users?pageNumber=${pageNumber}`, config)
+    const { data } = await axios.get(`${REACT_APP_SERVER_URL}/users?pageNumber=${pageNumber}`, config)
 
     dispatch({
       type: USER_LIST_SUCCESS,
@@ -247,7 +249,7 @@ export const deleteUser = (id) => async (dispatch, getState) => {
       },
     }
 
-    await axios.delete(`https://pharma07.herokuapp.com/api/users/${id}`, config)
+    await axios.delete(`${REACT_APP_SERVER_URL}/users/${id}`, config)
 
     dispatch({ type: USER_DELETE_SUCCESS })
   } catch (error) {
@@ -282,7 +284,7 @@ export const updateUser = (user) => async (dispatch, getState) => {
       },
     }
 
-    const { data } = await axios.put(`https://pharma07.herokuapp.com/api/users/${user._id}`, user, config)
+    const { data } = await axios.put(`${REACT_APP_SERVER_URL}/users/${user._id}`, user, config)
 
     dispatch({ type: USER_UPDATE_SUCCESS })
 

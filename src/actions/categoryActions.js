@@ -18,12 +18,14 @@ import {
 } from "../constants/categoryConstants";
 import { logout } from "./userActions";
 
+const { REACT_APP_SERVER_URL } = process.env;
+
 export const listCategories = (pageNumber = "") => async (dispatch) => {
   try {
     dispatch({ type: CATEGORY_LIST_REQUEST });
 
     const { data } = await axios.get(
-      `https://pharma07.herokuapp.com/api/categories/?pageNumber=${pageNumber}`
+      `${REACT_APP_SERVER_URL}/categories/?pageNumber=${pageNumber}`
     );
 
     dispatch({
@@ -41,7 +43,7 @@ export const listCategories = (pageNumber = "") => async (dispatch) => {
   }
 };
 
-export const listCategoryDetails = (id) => async (dispatch,getState) => {
+export const listCategoryDetails = (id) => async (dispatch, getState) => {
   try {
     dispatch({ type: CATEGORY_DETAILS_REQUEST });
     const {
@@ -52,7 +54,7 @@ export const listCategoryDetails = (id) => async (dispatch,getState) => {
         Authorization: `Bearer ${userInfo.token}`,
       },
     };
-    const { data } = await axios.get(`https://pharma07.herokuapp.com/api/categories/${id}`, config);
+    const { data } = await axios.get(`${REACT_APP_SERVER_URL}/categories/${id}`, config);
 
     dispatch({
       type: CATEGORY_DETAILS_SUCCESS,
@@ -85,7 +87,7 @@ export const deleteCategory = (id) => async (dispatch, getState) => {
       },
     };
 
-    await axios.delete(`https://pharma07.herokuapp.com/api/categories/${id}`, config);
+    await axios.delete(`${REACT_APP_SERVER_URL}/categories/${id}`, config);
 
     dispatch({
       type: CATEGORY_DELETE_SUCCESS,
@@ -121,7 +123,7 @@ export const createCategory = () => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.post(`https://pharma07.herokuapp.com/api/categories`, {}, config);
+    const { data } = await axios.post(`${REACT_APP_SERVER_URL}/categories`, {}, config);
 
     dispatch({
       type: CATEGORY_CREATE_SUCCESS,
@@ -160,7 +162,7 @@ export const updateCategory = (category) => async (dispatch, getState) => {
     };
 
     const { data } = await axios.put(
-      `https://pharma07.herokuapp.com/api/categories/${category._id}`,
+      `${REACT_APP_SERVER_URL}/categories/${category._id}`,
       category,
       config
     );
